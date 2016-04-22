@@ -1,0 +1,29 @@
+{
+    "rabbitmq": {
+      "title": "RabbitMQ Log",
+      "description": "RabbitMQ Log",
+      "url": "",
+      "multiline": true,
+      "regex": {
+        "basic": {
+          "pattern" : "^=(?<level>[A-Z]+) REPORT==== (?<timestamp>\\d{2}-\\w{3}-\\d{4}::\\d{2}:\\d{2}:\\d{2}) ===(?<body>(?:.|\\n)*?)$"
+        }
+      },
+      "timestamp-format" : ["%d-%b-%Y::%H:%M:%S"],
+      "level": {
+        "error": "ERROR",
+        "warning": "WARNING|SUPERVISOR",
+        "info": "INFO|PROGRESS",
+        "fatal": "CRASH"
+      },
+      "json": false,
+      "sample": [
+        {
+          "line": "=ERROR REPORT==== 21-Apr-2016::21:19:01 ===\\n** Node 'rabbit@red-hound-01' not responding **\\n** Removing (timedout) connection **\\n\\n"
+        },
+        {
+          "line": "=INFO REPORT==== 21-Apr-2016::21:19:01 ===\\nrabbit on node 'rabbit@red-hound-01' down\\n\\n"
+        }
+      ]
+    }
+}
