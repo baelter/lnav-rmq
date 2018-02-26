@@ -6,10 +6,10 @@
       "multiline": true,
       "regex": {
         "basic": {
-          "pattern" : "^=(?<level>[A-Z]+) REPORT==== (?<timestamp>\\d{2}-\\w{3}-\\d{4}::\\d{2}:\\d{2}:\\d{2}) ===(?<body>(?:.|\\n)*?)$"
+          "pattern" : "^=(?<level>[A-Z]+) REPORT==== (?<timestamp>\\d?\\d-\\w{3}-\\d{4}::\\d{2}:\\d{2}:\\d{2}) ===(?<body>(?:.|\\n)*?)$"
         }
       },
-      "timestamp-format" : ["%d-%b-%Y::%H:%M:%S"],
+      "timestamp-format" : ["%e-%b-%Y::%H:%M:%S"],
       "level": {
         "error": "ERROR",
         "warning": "WARNING|SUPERVISOR",
@@ -19,10 +19,13 @@
       "json": false,
       "sample": [
         {
-          "line": "=ERROR REPORT==== 21-Apr-2016::21:19:01 ===\\n** Node 'rabbit@red-hound-01' not responding **\\n** Removing (timedout) connection **\\n\\n"
+          "line": "=ERROR REPORT==== 1-Apr-2016::21:19:01 ===\\n** Node 'rabbit@red-hound-01' not responding **\\n** Removing (timedout) connection **\\n\\n"
         },
         {
           "line": "=INFO REPORT==== 21-Apr-2016::21:19:01 ===\\nrabbit on node 'rabbit@red-hound-01' down\\n\\n"
+        },
+        {
+          "line": "=INFO REPORT==== 9-Feb-2018::06:48:43 ===\\nConnection <0.13770.0> (192.168.245.3:44388 -> 192.168.245.3:5671) has a client-provided name: neutron-server:8005:44b05d78-c3ba-4c77-91db-4e245\\n\\n"
         }
       ]
     }
